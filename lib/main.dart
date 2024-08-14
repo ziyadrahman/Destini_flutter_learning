@@ -1,4 +1,7 @@
+import 'package:destini_learning/classes/story_brain.dart';
 import 'package:flutter/material.dart';
+
+StoryBrain storyBrain = StoryBrain();
 
 void main() => runApp(Destini());
 
@@ -30,12 +33,12 @@ class _StoryPageState extends State<StoryPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              const Expanded(
+              Expanded(
                 flex: 12,
                 child: Center(
                   child: Text(
-                    'Story Text',
-                    style: TextStyle(
+                    'Story Number: ${storyBrain.storyNumber}\n${storyBrain.getStory}',
+                    style: const TextStyle(
                       fontSize: 25.0,
                     ),
                   ),
@@ -52,11 +55,13 @@ class _StoryPageState extends State<StoryPage> {
                         Colors.red,
                       )),
                   onPressed: () {
-                    // Define the action to be performed when the button is pressed
+                    setState(() {
+                      storyBrain.nextStory(choiceNumber: 1);
+                    });
                   },
-                  child: const Text(
-                    'Choice 1',
-                    style: TextStyle(color: Colors.white),
+                  child: Text(
+                    storyBrain.getChoice1,
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ),
               ),
@@ -74,11 +79,13 @@ class _StoryPageState extends State<StoryPage> {
                         Colors.blue,
                       )),
                   onPressed: () {
-                    // Define the action to be performed when the button is pressed
+                    setState(() {
+                      storyBrain.nextStory(choiceNumber: 2);
+                    });
                   },
-                  child: const Text(
-                    'Choice 2',
-                    style: TextStyle(color: Colors.white),
+                  child: Text(
+                    storyBrain.getChoice2,
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ),
               ),
