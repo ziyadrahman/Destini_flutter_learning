@@ -33,6 +33,7 @@ class _StoryPageState extends State<StoryPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              //Story Text Widget
               Expanded(
                 flex: 12,
                 child: Center(
@@ -44,6 +45,7 @@ class _StoryPageState extends State<StoryPage> {
                   ),
                 ),
               ),
+              //Choice 1 Button Widget
               Expanded(
                 flex: 2,
                 child: TextButton(
@@ -68,24 +70,29 @@ class _StoryPageState extends State<StoryPage> {
               const SizedBox(
                 height: 20.0,
               ),
+              //Choice 2 Button Widget
+
               Expanded(
                 flex: 2,
-                child: TextButton(
-                  style: ButtonStyle(
-                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-                          const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.zero)),
-                      backgroundColor: WidgetStateProperty.all(
-                        Colors.blue,
-                      )),
-                  onPressed: () {
-                    setState(() {
-                      storyBrain.nextStory(choiceNumber: 2);
-                    });
-                  },
-                  child: Text(
-                    storyBrain.getChoice2,
-                    style: const TextStyle(color: Colors.white),
+                child: Visibility(
+                  visible: storyBrain.buttonShouldBeVisible,
+                  child: TextButton(
+                    style: ButtonStyle(
+                        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                            const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.zero)),
+                        backgroundColor: WidgetStateProperty.all(
+                          Colors.blue,
+                        )),
+                    onPressed: () {
+                      setState(() {
+                        storyBrain.nextStory(choiceNumber: 2);
+                      });
+                    },
+                    child: Text(
+                      storyBrain.getChoice2,
+                      style: const TextStyle(color: Colors.white),
+                    ),
                   ),
                 ),
               ),
