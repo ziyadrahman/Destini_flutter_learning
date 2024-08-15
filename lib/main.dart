@@ -37,7 +37,7 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 12,
                 child: Center(
                   child: Text(
-                    'Story Number: ${storyBrain.storyNumber}\n${storyBrain.getStory}',
+                    'Story Number: ${storyBrain.getStoryNo}\n${storyBrain.getStory}',
                     style: const TextStyle(
                       fontSize: 25.0,
                     ),
